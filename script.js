@@ -12,7 +12,7 @@ $(document).ready(function() {
   // to do this, we need to use the .click(function() { turnSquare( $(this) ) }) format
   
   $(".picture-box").click(function()
-  { turnSquare($(this) ) })
+  { turnSquare($(this) ); })
   
 });
 
@@ -41,18 +41,20 @@ function turnSquare(squareObject)
     firstColor = secretSquareColor;
   }
   if (clickCount == 2) {
-    firstColor = secretSquareColor;
+    secondColor = secretSquareColor;
+    checkMatches();
   }
-}
+} 
 
-
-
-  
+function checkMatches(){  
   // STEP FOUR
   //create a conditional that says if firstColor is the same as secondColor, alert to the user "You Win!"
   // else alert to the user "Try again!"
-  if (firstColor = secondColor)
-  
+  if (firstColor == secondColor) {
+    alert("You Win!");
+  } else {
+    alert("Try Again!");
+  }
   
 
   // STEP FIVE
@@ -61,20 +63,17 @@ function turnSquare(squareObject)
   resetSquares();
 
 }
-
-
 function resetSquares()
 {
   // STEP SIX
   // reset the clickCount variablel to 0
-  
-  
-  
+  clickCount = 0;
   $("#clickCount").html(clickCount);
   
+ 
   
   // STEP SEVEN
   // change all elements with the class picture-box to have a background color of #cccccc
-  
+  $(".picture-box").css("background-color", "#cccccc");
 
 }
